@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production / Build output
+dist/
+build/
+
+# Databases & local data
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Environment files & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
