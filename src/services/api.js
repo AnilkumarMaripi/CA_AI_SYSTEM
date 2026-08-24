@@ -22,6 +22,10 @@ export async function requestApi(endpoint, options = {}) {
   });
 
   if (!response.ok) {
+    if (response.status === 401) {
+      localStorage.removeItem('taxdesk_token');
+      localStorage.removeItem('taxdesk_user');
+    }
     const errorData = await response.json().catch(() => ({ detail: 'API Error' }));
     throw new Error(errorData.detail || `Request failed with status ${response.status}`);
   }

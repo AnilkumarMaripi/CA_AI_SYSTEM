@@ -94,8 +94,11 @@ def get_public_token_info(token: str, db: Session = Depends(get_db)):
         due_date=due_date
     )
 
+ALLOWED_EXTENSIONS = {".pdf", ".png", ".jpg", ".jpeg", ".csv", ".xlsx", ".xls", ".docx"}
+MAX_FILE_SIZE_BYTES = 15 * 1024 * 1024  # 15 MB limit
+
 @router.post("/public/upload/{token}")
-def public_client_file_upload(
+async def public_client_file_upload(
     token: str,
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
@@ -104,12 +107,31 @@ def public_client_file_upload(
     if not doc:
         raise HTTPException(status_code=404, detail="Invalid or expired upload link token")
 
-    file_ext = os.path.splitext(file.filename)[1]
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="No file filename provided")
+
+    raw_filename = os.path.basename(file.filename)
+    file_ext = os.path.splitext(raw_filename)[1].lower()
+
+    if file_ext not in ALLOWED_EXTENSIONS:
+        raise HTTPException(
+            status_code=400, 
+            detail=f"Disallowed file extension '{file_ext}'. Allowed formats: PDF, PNG, JPG, JPEG, CSV, XLSX, DOCX."
+        )
+
+    # Validate file size (max 15 MB)
+    contents = await file.read()
+    if len(contents) > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(
+            status_code=400,
+            detail="File size exceeds maximum permitted limit of 15MB."
+        )
+
     saved_filename = f"{token}_{int(datetime.datetime.utcnow().timestamp())}{file_ext}"
     file_path = os.path.join(UPLOAD_DIR, saved_filename)
 
     with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+        buffer.write(contents)
 
     doc.file_path = file_path
     doc.status = "Uploaded"
@@ -122,6 +144,7 @@ def public_client_file_upload(
     db.commit()
     return {
         "message": "File uploaded successfully!",
-        "filename": file.filename,
+        "filename": raw_filename,
         "doc_status": "Uploaded"
     }
+

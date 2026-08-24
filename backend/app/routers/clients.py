@@ -4,7 +4,7 @@ from typing import List, Optional
 from ..database import get_db
 from ..models import Client, ComplianceTask, Document, User
 from ..schemas import ClientCreate, ClientUpdate, ClientOut
-from ..auth import get_current_user
+from ..auth import get_current_user, require_admin
 from ..engine import generate_client_compliance_tasks, calculate_urgency
 
 router = APIRouter(prefix="/api/v1/clients", tags=["Clients"])
@@ -79,7 +79,7 @@ def update_client(
     return client
 
 @router.delete("/{client_id}")
-def delete_client(client_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def delete_client(client_id: str, db: Session = Depends(get_db), current_user: User = Depends(require_admin)):
     client = db.query(Client).filter(Client.id == client_id).first()
     if not client:
         raise HTTPException(status_code=404, detail="Client not found")
