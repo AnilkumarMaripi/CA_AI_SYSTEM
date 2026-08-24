@@ -113,8 +113,10 @@ export default function ComplianceCalendar({ tasks = [], onUpdateTaskStatus, onG
               <button
                 key={cat}
                 onClick={() => setCategoryFilter(cat)}
-                className={`px-3 py-1 rounded-lg transition-all min-h-[30px] ${
-                  categoryFilter === cat ? 'bg-slate-800 text-emerald-400 font-bold border border-emerald-500/30' : 'text-slate-400 hover:text-white'
+                className={`px-3 py-1 rounded-lg transition-all min-h-[30px] border ${
+                  categoryFilter === cat 
+                    ? 'bg-emerald-500/20 text-emerald-300 font-bold border-emerald-500/40 shadow-sm' 
+                    : 'text-slate-400 hover:text-emerald-300 hover:bg-emerald-500/12 hover:border-emerald-500/30 border-transparent'
                 }`}
               >
                 {cat}
@@ -128,11 +130,13 @@ export default function ComplianceCalendar({ tasks = [], onUpdateTaskStatus, onG
               <button
                 key={urg}
                 onClick={() => setUrgencyFilter(urg)}
-                className={`px-3 py-1 rounded-lg transition-all text-[11px] min-h-[30px] ${
-                  urgencyFilter === urg ? 'bg-emerald-500 text-slate-950 font-extrabold' : 'text-slate-400 hover:text-white'
+                className={`px-3 py-1 rounded-lg transition-all min-h-[30px] border ${
+                  urgencyFilter === urg 
+                    ? 'bg-emerald-500/20 text-emerald-300 font-bold border-emerald-500/40 shadow-sm' 
+                    : 'text-slate-400 hover:text-emerald-300 hover:bg-emerald-500/12 hover:border-emerald-500/30 border-transparent'
                 }`}
               >
-                {urg}
+                {urg.replace('_', ' ')}
               </button>
             ))}
           </div>

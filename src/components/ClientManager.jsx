@@ -129,17 +129,20 @@ export default function ClientManager({ clients = [], onCreateClient, onUpdateCl
             <button
               key={tab.id}
               onClick={() => setEntityFilter(tab.id)}
-              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 min-h-[36px] ${
+              className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 min-h-[36px] border ${
                 entityFilter === tab.id
-                  ? 'bg-slate-800 text-emerald-400 font-bold border border-emerald-500/30'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-emerald-500/20 text-emerald-300 font-bold border-emerald-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-emerald-300 hover:bg-emerald-500/12 hover:border-emerald-500/30 border-transparent'
               }`}
             >
               <span>{tab.label}</span>
-              <span className="px-1.5 py-0.2 text-[10px] rounded bg-slate-950 text-slate-400 font-mono">
+              <span className={`px-1.5 py-0.2 text-[10px] rounded font-mono ${
+                entityFilter === tab.id ? 'bg-emerald-950 text-emerald-400 font-bold' : 'bg-slate-900 text-slate-400'
+              }`}>
                 {tab.count}
               </span>
             </button>
+
           ))}
         </div>
 

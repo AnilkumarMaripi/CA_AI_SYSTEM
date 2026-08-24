@@ -89,13 +89,16 @@ export default function DocumentCollection({ documents = [], clients = [], onReq
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
-              className={`px-3.5 py-1.5 rounded-full transition-all whitespace-nowrap min-h-[34px] ${
-                statusFilter === st ? 'bg-[#141416] text-[#fafaf7] font-bold shadow' : 'text-[#8b847a] hover:text-[#141416]'
+              className={`px-3.5 py-1.5 rounded-full transition-all whitespace-nowrap min-h-[34px] border ${
+                statusFilter === st 
+                  ? 'bg-emerald-500/20 text-emerald-300 font-bold border-emerald-500/40 shadow-sm' 
+                  : 'text-slate-400 hover:text-emerald-300 hover:bg-emerald-500/12 hover:border-emerald-500/30 border-transparent'
               }`}
             >
               {st}
             </button>
           ))}
+
         </div>
       </div>
 
