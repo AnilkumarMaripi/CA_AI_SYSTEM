@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,300;0,9..144,400;1,9..144,300&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --obsidian: #09090b;
-  --surface: #121215;
-  --surface-hover: #18181c;
-  --border: #1f1f23;
-  --border-light: #27272a;
-  --indigo: #6366f1;
-  --indigo-glow: rgba(99, 102, 241, 0.18);
-  --emerald: #22c55e;
-  --rose: #f43f5e;
-  --amber: #f59e0b;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-sub: #64748b;
-  --font-ui: 'Inter', 'Outfit', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --ivory: #F5F0E8;
+  --cream: #EDE7D9;
+  --paper: #FAF7F2;
+  --charcoal: #1A1814;
+  --ink: #0F0E0C;
+  --emerald: #059669;
+  --emerald-dark: #064E3B;
+  --emerald-light: #D1FAE5;
+  --gold: #D97706;
+  --rose: #E11D48;
+  --border: #E2DAC8;
+  --shadow: 0 4px 24px -2px rgba(26, 24, 20, 0.08);
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-serif: 'Fraunces', serif;
 }
 
 * {
@@ -30,14 +30,14 @@
 
 html, body {
   height: 100%;
-  background-color: var(--obsidian) !important;
-  color: var(--text-main) !important;
+  background-color: var(--paper) !important;
+  color: var(--charcoal) !important;
 }
 
 body {
-  font-family: var(--font-ui);
-  background: var(--obsidian) !important;
-  color: var(--text-main) !important;
+  font-family: var(--font-display);
+  background: var(--paper) !important;
+  color: var(--charcoal) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -58,99 +58,83 @@ button, input, select, a, textarea {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: var(--paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: var(--border);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #C4B9A5;
 }
 
-/* Deep Space Ambient Glow Background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: 
-    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(34, 197, 94, 0.05) 0%, transparent 40%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* ==========================================================================
-   GLASSMORPHISM CARDS & PANELS (OBSIDIAN DARK THEME)
-   ========================================================================== */
+/* Glassmorphism / Paper Cards & Panels (White/Cream Theme) */
 .glass-panel {
-  background: rgba(18, 18, 21, 0.85) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  background: #FAF7F2 !important;
   border: 1px solid var(--border) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+  box-shadow: var(--shadow) !important;
   border-radius: 20px !important;
 }
 
 .glass-panel-glow {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(18, 18, 21, 0.9) 100%) !important;
-  border: 1px solid rgba(99, 102, 241, 0.35) !important;
-  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.15) !important;
+  background: linear-gradient(135deg, #F5F0E8 0%, #EDE7D9 100%) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .glass-panel-alert {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(18, 18, 21, 0.9) 100%) !important;
-  border: 1px solid rgba(244, 63, 94, 0.35) !important;
-  box-shadow: 0 8px 32px 0 rgba(244, 63, 94, 0.15) !important;
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%) !important;
+  border: 1px solid #FECDD3 !important;
+  box-shadow: 0 4px 20px rgba(225, 29, 72, 0.08) !important;
 }
 
 .stat-light {
-  background: var(--surface) !important;
-  color: var(--text-main) !important;
+  background: #FFFFFF !important;
+  color: var(--charcoal) !important;
   border: 1px solid var(--border) !important;
 }
 
 /* Headings */
 .glass-panel h1, .glass-panel h2, .glass-panel h3, .glass-panel h4 {
-  color: var(--text-main) !important;
+  color: var(--charcoal) !important;
+  font-family: var(--font-display) !important;
 }
 
-/* Top Glow Bar */
+/* Top Bar Accent */
 .top-bar {
   height: 3px;
-  background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #22c55e 100%);
+  background: linear-gradient(90deg, #059669 0%, #D97706 50%, #064E3B 100%);
   width: 100%;
 }
 
-/* Floating Navigation Pill */
+/* Floating Navigation Pill (White/Cream Style) */
 .nav-pill {
   display: inline-flex;
   align-items: center;
-  background: rgba(18, 18, 21, 0.88);
-  backdrop-filter: blur(20px);
+  background: #FAF7F2;
   border: 1px solid var(--border);
   border-radius: 100px;
   padding: 6px 16px;
   gap: 6px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(26, 24, 20, 0.08);
 }
 
 .logo {
   padding: 8px 14px;
   font-size: 17px;
   font-weight: 800;
-  color: var(--text-main) !important;
+  color: var(--charcoal) !important;
   letter-spacing: -0.02em;
   text-decoration: none;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Syne', sans-serif;
 }
 
 .nav-link {
   padding: 8px 16px 9px;
   font-size: 13px;
-  font-family: var(--font-ui);
+  font-family: var(--font-display);
   font-weight: 500;
-  color: var(--text-muted);
+  color: #555047;
   text-decoration: none;
   border-radius: 100px;
   transition: all 0.2s ease;
@@ -160,31 +144,30 @@ body::before {
 }
 
 .nav-link:hover {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--charcoal);
+  background: var(--cream);
 }
 
 .nav-link.active {
-  color: #ffffff !important;
-  background: rgba(99, 102, 241, 0.25) !important;
-  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  color: #064E3B !important;
+  background: #D1FAE5 !important;
+  border: 1px solid #A7F3D0 !important;
   font-weight: 700;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
 }
 
 /* Buttons */
 .book-cta, .cta-yellow, .btn-yellow, button.btn-yellow, .nav-cta {
   padding: 10px 22px;
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  background: #059669 !important;
   color: #ffffff !important;
   border-radius: 100px !important;
   font-size: 13px;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   text-decoration: none;
-  border: 1px solid rgba(99, 102, 241, 0.5) !important;
+  border: 1px solid #047857 !important;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35) !important;
-  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25) !important;
+  transition: all 0.2s ease !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -192,15 +175,15 @@ body::before {
 }
 
 .book-cta:hover, .cta-yellow:hover, .btn-yellow:hover, .nav-cta:hover {
+  background: #064E3B !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5) !important;
-  filter: brightness(1.1) !important;
+  box-shadow: 0 6px 18px rgba(6, 78, 59, 0.3) !important;
 }
 
 .btn-black, .btn-cancel, button.bg-slate-800, button.bg-slate-900 {
-  background: #18181b !important;
-  color: #f8fafc !important;
-  border: 1px solid #27272a !important;
+  background: #1A1814 !important;
+  color: #FAF7F2 !important;
+  border: 1px solid #1A1814 !important;
   border-radius: 100px !important;
   font-weight: 600 !important;
   cursor: pointer;
@@ -208,51 +191,50 @@ body::before {
 }
 
 .btn-black:hover, .btn-cancel:hover, button.bg-slate-800:hover, button.bg-slate-900:hover {
-  background: #27272a !important;
-  border-color: #3f3f46 !important;
+  background: #332F28 !important;
 }
 
 /* Inputs */
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], select, textarea {
-  background: #121215 !important;
-  border: 1px solid #1f1f23 !important;
-  color: #f8fafc !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2DAC8 !important;
+  color: #1A1814 !important;
   border-radius: 12px !important;
   font-size: 13.5px !important;
 }
 
 input::placeholder, textarea::placeholder {
-  color: #64748b !important;
+  color: #8C8275 !important;
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: #6366f1 !important;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+  border-color: #059669 !important;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15) !important;
   outline: none !important;
 }
 
 select option {
-  background-color: #121215 !important;
-  color: #f8fafc !important;
+  background-color: #FFFFFF !important;
+  color: #1A1814 !important;
 }
 
 /* Tables */
 .table-responsive-container {
-  background: #121215 !important;
-  border: 1px solid #1f1f23 !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2DAC8 !important;
   border-radius: 20px !important;
   overflow: hidden !important;
 }
 
 .table-responsive-container table thead tr {
-  background: #18181c !important;
-  color: #94a3b8 !important;
-  border-bottom: 1px solid #1f1f23 !important;
+  background: #EDE7D9 !important;
+  color: #4A443C !important;
+  border-bottom: 1px solid #E2DAC8 !important;
 }
 
 .table-responsive-container table th {
-  color: #94a3b8 !important;
-  font-weight: 600 !important;
+  color: #4A443C !important;
+  font-weight: 700 !important;
   font-size: 11px !important;
   letter-spacing: 0.08em !important;
   padding: 14px 18px !important;
@@ -260,17 +242,16 @@ select option {
 
 .table-responsive-container table td {
   padding: 14px 18px !important;
-  border-bottom: 1px solid #1f1f23 !important;
-  color: #f8fafc !important;
+  border-bottom: 1px solid #F0E8DA !important;
+  color: #1A1814 !important;
 }
 
 .table-responsive-container table tbody tr:hover {
-  background: rgba(99, 102, 241, 0.08) !important;
+  background: #F5F0E8 !important;
 }
 
 /* Modals backdrop */
 .fixed.inset-0.bg-slate-950\/80 {
-  background: rgba(9, 9, 11, 0.8) !important;
-  backdrop-filter: blur(12px) !important;
+  background: rgba(26, 24, 20, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
 }
-

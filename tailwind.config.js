@@ -15,20 +15,25 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Outfit', 'sans-serif'],
-        display: ['Outfit', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        display: ['Syne', 'sans-serif'],
+        mono: ['DM Mono', 'monospace'],
+        serif: ['Fraunces', 'serif'],
+        sans: ['Syne', 'sans-serif'],
       },
       colors: {
-        obsidian: '#09090b',
-        surface: '#121215',
-        indigoAcc: {
-          DEFAULT: '#6366f1',
-          light: '#818cf8',
-          glow: 'rgba(99, 102, 241, 0.15)',
+        ivory: '#F5F0E8',
+        cream: '#EDE7D9',
+        paper: '#FAF7F2',
+        charcoal: '#1A1814',
+        ink: '#0F0E0C',
+        taxEmerald: {
+          DEFAULT: '#059669',
+          dark: '#064E3B',
+          light: '#D1FAE5',
         },
-        emeraldAcc: '#22c55e',
-        cardBorder: '#1f1f23',
+        gold: '#D97706',
+        rose: '#E11D48',
+        cardBorder: '#E2DAC8',
       },
     },
   },

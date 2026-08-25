@@ -233,7 +233,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-[#f8fafc] flex flex-col font-sans">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#1A1814] flex flex-col font-sans">
       <div className="top-bar"></div>
       
       {/* Top Navbar */}
@@ -327,7 +327,7 @@ export default function App() {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-5 right-5 z-50 bg-[#6366f1] text-white px-4 py-2.5 rounded-xl font-bold text-xs shadow-2xl animate-bounce border border-indigo-400/30">
+        <div className="fixed bottom-5 right-5 z-50 bg-[#059669] text-white px-4 py-2.5 rounded-xl font-bold text-xs shadow-2xl animate-bounce border border-[#047857]">
           {toastMessage}
         </div>
       )}
