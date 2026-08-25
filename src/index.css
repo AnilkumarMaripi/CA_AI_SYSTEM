@@ -1,22 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg: #090d16;
-  --bg-soft: #0f172a;
-  --ink: #f8fafc;
-  --ink-soft: #cbd5e1;
-  --muted: #94a3b8;
-  --muted-2: #64748b;
-  --card-bg: #111827;
-  --card-border: rgba(255, 255, 255, 0.08);
-  --yellow: #fde351;
-  --yellow-2: #f7d130;
-  --yellow-hover: #ffe760;
-  --yellow-border: #d8b020;
+  --bg: #f8fafc;
+  --bg-soft: #f1f5f9;
+  --ink: #0f172a;
+  --ink-soft: #334155;
+  --muted: #64748b;
+  --muted-2: #94a3b8;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --emerald: #10b981;
+  --emerald-dark: #059669;
 }
 
 * {
@@ -27,14 +25,14 @@
 
 html, body {
   height: 100%;
-  background-color: #090d16 !important;
-  color: #f8fafc !important;
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
 }
 
 body {
-  font-family: "Funnel Display", 'Plus Jakarta Sans', system-ui, sans-serif;
-  background: #090d16 !important;
-  color: #f8fafc !important;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: #f8fafc !important;
+  color: #0f172a !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -55,49 +53,49 @@ button, input, select, a, textarea {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #94a3b8;
 }
 
-/* ============= GLASS PANELS & CARDS ============= */
+/* ============= GLASS PANELS & CARDS (WHITE THEME) ============= */
 .glass-panel {
-  background: rgba(17, 24, 39, 0.75) !important;
+  background: #ffffff !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03) !important;
 }
 
 .glass-panel-glow {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(17, 24, 39, 0.85) 100%) !important;
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.9) 0%, rgba(255, 255, 255, 0.98) 100%) !important;
   backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(16, 185, 129, 0.35) !important;
-  box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.18) !important;
+  border: 1px solid #a7f3d0 !important;
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.12) !important;
 }
 
 .glass-panel-alert {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.12) 0%, rgba(17, 24, 39, 0.85) 100%) !important;
+  background: linear-gradient(135deg, rgba(255, 241, 242, 0.9) 0%, rgba(255, 255, 255, 0.98) 100%) !important;
   backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(244, 63, 94, 0.35) !important;
-  box-shadow: 0 10px 30px -5px rgba(244, 63, 94, 0.18) !important;
+  border: 1px solid #fecdd3 !important;
+  box-shadow: 0 4px 20px -2px rgba(244, 63, 94, 0.12) !important;
 }
 
 .stat-light {
-  background: rgba(30, 41, 59, 0.7) !important;
-  color: #f8fafc !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
 }
 
-/* Ensure headings inside glass panels render in clean crisp white */
+/* Headings inside panels */
 .glass-panel h1, .glass-panel h2, .glass-panel h3, .glass-panel h4 {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 /* ============= TOP ACCENT BAR ============= */
@@ -107,24 +105,24 @@ button, input, select, a, textarea {
   width: 100%;
 }
 
-/* ============= SLEEK FLOATING NAV PILL ============= */
+/* ============= SLEEK FLOATING NAV PILL (LIGHT MODE) ============= */
 .nav-pill {
   display: inline-flex;
   align-items: center;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #e2e8f0;
   border-radius: 100px;
-  padding: 6px 12px;
+  padding: 6px 14px;
   gap: 6px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
 }
 
 .logo {
   padding: 8px 14px;
   font-size: 17px;
-  font-weight: 700;
-  color: #ffffff !important;
+  font-weight: 800;
+  color: #0f172a !important;
   letter-spacing: -0.02em;
   text-decoration: none;
 }
@@ -132,26 +130,26 @@ button, input, select, a, textarea {
 .nav-link {
   padding: 9px 16px 10px;
   font-size: 14px;
-  font-weight: 500;
-  color: #94a3b8;
+  font-weight: 600;
+  color: #475569;
   text-decoration: none;
   border-radius: 100px;
   letter-spacing: -0.005em;
   transition: all 0.2s ease;
   cursor: pointer;
   background: transparent;
-  border: 0;
+  border: 1px solid transparent;
 }
 
 .nav-link:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  color: #0f172a;
+  background: #f1f5f9;
 }
 
 .nav-link.active {
-  color: #ffffff;
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #047857 !important;
+  background: #ecfdf5 !important;
+  border: 1px solid #a7f3d0 !important;
   font-weight: 700;
 }
 
@@ -165,9 +163,9 @@ button, input, select, a, textarea {
   font-weight: 700 !important;
   text-decoration: none;
   letter-spacing: -0.005em;
-  border: 1px solid rgba(16, 185, 129, 0.5) !important;
+  border: 1px solid #059669 !important;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25) !important;
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
   display: inline-flex;
   align-items: center;
@@ -177,18 +175,18 @@ button, input, select, a, textarea {
 
 .book-cta:hover, .cta-yellow:hover, .btn-yellow:hover, .nav-cta:hover {
   transform: translateY(-1px) !important;
-  filter: brightness(1.1) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35) !important;
 }
 
 .book-cta:active, .cta-yellow:active, .btn-yellow:active, .nav-cta:active {
   transform: translateY(1px) !important;
 }
 
-/* Secondary / Dark Neutral Buttons */
+/* Secondary / Light Buttons */
 .btn-black, .btn-cancel, button.bg-slate-800, button.bg-slate-900 {
-  background: rgba(30, 41, 59, 0.8) !important;
-  color: #f8fafc !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+  border: 1px solid #cbd5e1 !important;
   border-radius: 100px !important;
   font-weight: 600 !important;
   cursor: pointer;
@@ -196,26 +194,26 @@ button, input, select, a, textarea {
 }
 
 .btn-black:hover, .btn-cancel:hover, button.bg-slate-800:hover, button.bg-slate-900:hover {
-  background: rgba(51, 65, 85, 0.9) !important;
-  color: #ffffff !important;
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
   transform: translateY(-1px) !important;
 }
 
 /* Red / Danger / Delete Buttons */
 .btn-danger, .btn-red, button.bg-rose-500\/20, button.bg-rose-600 {
-  background: linear-gradient(180deg, #f43f5e 0%, #e11d48 100%) !important;
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important;
   color: #ffffff !important;
-  border: 1px solid #be123c !important;
+  border: 1px solid #b91c1c !important;
   border-radius: 100px !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 6px rgba(190, 18, 60, 0.3) !important;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25) !important;
   cursor: pointer;
   transition: all 0.15s ease !important;
 }
 
 .btn-danger:hover, .btn-red:hover, button.bg-rose-600:hover {
   transform: translateY(-1px) !important;
-  filter: brightness(1.1) !important;
+  filter: brightness(1.05) !important;
 }
 
 /* Emerald / Success Buttons */
@@ -225,7 +223,7 @@ button, input, select, a, textarea {
   border: 1px solid #047857 !important;
   border-radius: 100px !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3) !important;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25) !important;
   cursor: pointer;
   transition: all 0.15s ease !important;
 }
@@ -237,36 +235,35 @@ button, input, select, a, textarea {
 
 /* Inputs & Form Controls */
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], select, textarea {
-  background: rgba(15, 23, 42, 0.8) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: #f8fafc !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
   border-radius: 12px !important;
   font-size: 13.5px !important;
 }
 
 input::placeholder, textarea::placeholder {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 input:focus, textarea:focus, select:focus {
   border-color: #10b981 !important;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
   outline: none !important;
 }
 
-/* Status select pills */
 select option {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
   padding: 8px 12px !important;
 }
 
 .status-select-pill {
   appearance: none;
   -webkit-appearance: none;
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
   border-radius: 100px !important;
   font-weight: 700 !important;
   cursor: pointer;
@@ -274,21 +271,22 @@ select option {
 
 /* Data Tables */
 .table-responsive-container {
-  background: rgba(15, 23, 42, 0.75) !important;
+  background: #ffffff !important;
   backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 20px !important;
   overflow: hidden !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03) !important;
 }
 
 .table-responsive-container table thead tr {
-  background: rgba(30, 41, 59, 0.8) !important;
-  color: #f8fafc !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
 }
 
 .table-responsive-container table th {
-  color: #94a3b8 !important;
+  color: #475569 !important;
   font-weight: 700 !important;
   font-size: 11px !important;
   letter-spacing: 0.04em !important;
@@ -297,24 +295,25 @@ select option {
 
 .table-responsive-container table td {
   padding: 14px 16px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-  color: #f8fafc !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  color: #0f172a !important;
 }
 
 .table-responsive-container table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: #f8fafc !important;
 }
 
 .table-responsive-container td .text-white, .table-responsive-container td span.font-bold {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 .table-responsive-container td .text-slate-400, .table-responsive-container td .text-slate-500 {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 /* Modals backdrop */
 .fixed.inset-0.bg-slate-950\/80 {
-  background: rgba(9, 13, 22, 0.85) !important;
+  background: rgba(15, 23, 42, 0.45) !important;
   backdrop-filter: blur(8px) !important;
 }
+

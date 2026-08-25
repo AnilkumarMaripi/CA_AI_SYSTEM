@@ -28,11 +28,11 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
           className="logo flex items-center gap-2 cursor-pointer select-none shrink-0" 
           onClick={() => handleSelectModule('clients')}
         >
-          <div className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 font-extrabold text-xs">
+          <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 font-extrabold text-xs">
             ⚖️
           </div>
-          <span className="font-bold text-[17px] text-white tracking-tight">
-            Tax<span className="text-emerald-400">Desk</span>
+          <span className="font-bold text-[17px] text-slate-900 tracking-tight">
+            Tax<span className="text-emerald-600">Desk</span>
           </span>
         </div>
 
@@ -47,21 +47,21 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
                 onClick={() => handleSelectModule(item.id)}
                 className={`nav-link flex items-center gap-1.5 ${isActive ? 'active' : ''}`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-emerald-400' : 'text-slate-400'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-emerald-600' : 'text-slate-500'}`} />
                 <span>{item.label}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Right CTA: Staff Login / User Badge (Yellow Glossy Button Style) */}
+        {/* Right CTA: Staff Login / User Badge */}
         <div className="flex items-center gap-2 shrink-0">
           {currentUser ? (
-            <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-full text-xs text-white">
-              <UserCheck className="w-4 h-4 text-emerald-400" />
+            <div className="flex items-center gap-2 bg-white border border-slate-200 px-3 py-1.5 rounded-full text-xs text-slate-800 shadow-sm">
+              <UserCheck className="w-4 h-4 text-emerald-600" />
               <div className="hidden sm:block text-left leading-tight">
-                <span className="font-bold block text-[11px] text-white">{currentUser.full_name}</span>
-                <span className="text-[9px] uppercase tracking-wider text-emerald-400 font-mono">{currentUser.role}</span>
+                <span className="font-bold block text-[11px] text-slate-900">{currentUser.full_name}</span>
+                <span className="text-[9px] uppercase tracking-wider text-emerald-700 font-mono">{currentUser.role}</span>
               </div>
             </div>
           ) : (
@@ -77,7 +77,7 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
           {/* Mobile Menu Hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-300 hover:text-white bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center w-9 h-9"
+            className="lg:hidden p-2 text-slate-600 hover:text-slate-900 bg-slate-100 border border-slate-200 rounded-full flex items-center justify-center w-9 h-9"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -88,7 +88,7 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-20 left-4 right-4 bg-[#0a0a0a] border border-slate-800 rounded-2xl p-4 shadow-2xl space-y-2 z-50 animate-fadeIn">
+        <div className="lg:hidden absolute top-20 left-4 right-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-2xl space-y-2 z-50 animate-fadeIn">
           <div className="grid grid-cols-2 gap-2 text-xs font-medium">
             {navItems.map(item => {
               const Icon = item.icon;
@@ -99,11 +99,11 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
                   onClick={() => handleSelectModule(item.id)}
                   className={`p-3 rounded-xl border flex items-center gap-2 transition-all text-left ${
                     isActive
-                      ? 'bg-slate-800 border-emerald-500/40 text-white font-bold'
-                      : 'bg-slate-900/60 border-slate-800/80 text-slate-300'
+                      ? 'bg-emerald-50 border-emerald-300 text-emerald-800 font-bold'
+                      : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                   }`}
                 >
-                  <Icon className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <Icon className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span className="line-clamp-1">{item.label}</span>
                 </button>
               );
