@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -r https://github.com/AnilkumarMaripi/CA_AI_SYSTEM.git"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
