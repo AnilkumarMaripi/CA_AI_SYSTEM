@@ -11,6 +11,7 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
     { id: 'reconciliation', label: 'CSV Reconciler', icon: GitCompare },
     { id: 'tasks', label: 'Task Kanban', icon: LayoutGrid },
     { id: 'dashboard', label: 'Firm Analytics', icon: BarChart3 },
+    { id: 'login', label: 'Login & Network', icon: Lock },
   ];
 
   const handleSelectModule = (id) => {

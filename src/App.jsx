@@ -8,6 +8,7 @@ import ClientUploadPortal from './components/ClientUploadPortal';
 import ReconciliationTool from './components/ReconciliationTool';
 import TaskKanbanBoard from './components/TaskKanbanBoard';
 import FirmOwnerDashboard from './components/FirmOwnerDashboard';
+import LoginPage from './components/LoginPage';
 import AuthModal from './components/AuthModal';
 
 import { clientsApi, complianceApi, documentsApi, authApi, tasksApi } from './services/api';
@@ -223,6 +224,10 @@ export default function App() {
 
         {activeModule === 'dashboard' && (
           <FirmOwnerDashboard />
+        )}
+
+        {activeModule === 'login' && (
+          <LoginPage onLoginSuccess={(u) => { setCurrentUser(u); refreshAllData(); }} />
         )}
 
       </main>
