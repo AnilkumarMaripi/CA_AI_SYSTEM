@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import CaGateOverlay from './components/CaGateOverlay';
 import ClientManager from './components/ClientManager';
 import ClientDashboardModal from './components/ClientDashboardModal';
 import ComplianceCalendar from './components/ComplianceCalendar';
@@ -54,13 +55,8 @@ export default function App() {
   const [routeHash, setRouteHash] = useState(window.location.hash);
   const [activeModule, setActiveModule] = useState('clients'); // clients | compliance | documents | reconciliation | tasks | dashboard | feed | connections | messages | ai-assistant | login
   
-  // Data States initialized with rich defaults
-  const [currentUser, setCurrentUser] = useState({
-    full_name: 'CA Rajesh Sharma, FCA',
-    name: 'CA Rajesh Sharma, FCA',
-    role: 'Partner / Admin',
-    email: 'admin@taxdesk.in'
-  });
+  // CA Verification Lock State (Purley for CA)
+  const [currentUser, setCurrentUser] = useState(null);
 
   const [clients, setClients] = useState(defaultClients);
   const [complianceTasks, setComplianceTasks] = useState(defaultComplianceTasks);
@@ -79,7 +75,6 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Fetch live backend data if available, fallback smoothly to defaults
   const refreshAllData = async () => {
     try {
       const [cList, tList, dList, uList] = await Promise.all([
@@ -232,6 +227,8 @@ export default function App() {
     return <ClientUploadPortal token={token} />;
   }
 
+  const isCaVerified = !!currentUser;
+
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#1A1814] flex flex-col font-sans">
       <div className="top-bar"></div>
@@ -247,80 +244,93 @@ export default function App() {
       {/* Main Practice & Platform View Renderer */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         
-        {activeModule === 'clients' && (
-          <ClientManager
-            clients={clients}
-            onCreateClient={handleCreateClient}
-            onUpdateClient={handleUpdateClient}
-            onDeleteClient={handleDeleteClient}
-            onOpenClientDashboard={(client) => setSelectedClientForDashboard(client)}
+        {/* If Not Verified as CA and trying to access CA features, show strict CA Gate */}
+        {!isCaVerified && activeModule !== 'login' ? (
+          <CaGateOverlay
+            onVerifyCa={(caUser) => {
+              setCurrentUser(caUser);
+              showToast(`✓ Welcome, ${caUser.name}! All CA Practice Features Unlocked.`);
+            }}
+            onGoToLogin={() => setActiveModule('login')}
           />
-        )}
+        ) : (
+          <>
+            {activeModule === 'clients' && (
+              <ClientManager
+                clients={clients}
+                onCreateClient={handleCreateClient}
+                onUpdateClient={handleUpdateClient}
+                onDeleteClient={handleDeleteClient}
+                onOpenClientDashboard={(client) => setSelectedClientForDashboard(client)}
+              />
+            )}
 
-        {activeModule === 'compliance' && (
-          <ComplianceCalendar
-            tasks={complianceTasks}
-            onUpdateTaskStatus={handleUpdateTaskStatus}
-            onGenerateAllDeadlines={handleGenerateAllDeadlines}
-          />
-        )}
+            {activeModule === 'compliance' && (
+              <ComplianceCalendar
+                tasks={complianceTasks}
+                onUpdateTaskStatus={handleUpdateTaskStatus}
+                onGenerateAllDeadlines={handleGenerateAllDeadlines}
+              />
+            )}
 
-        {activeModule === 'documents' && (
-          <DocumentCollection
-            documents={documents}
-            clients={clients}
-            onRequestDocument={handleRequestDocument}
-            onUpdateDocStatus={handleUpdateDocStatus}
-          />
-        )}
+            {activeModule === 'documents' && (
+              <DocumentCollection
+                documents={documents}
+                clients={clients}
+                onRequestDocument={handleRequestDocument}
+                onUpdateDocStatus={handleUpdateDocStatus}
+              />
+            )}
 
-        {activeModule === 'reconciliation' && (
-          <ReconciliationTool />
-        )}
+            {activeModule === 'reconciliation' && (
+              <ReconciliationTool />
+            )}
 
-        {activeModule === 'tasks' && (
-          <TaskKanbanBoard
-            tasks={complianceTasks}
-            users={users}
-            onAssignTask={handleAssignTask}
-            onUpdateStage={handleUpdateKanbanStage}
-          />
-        )}
+            {activeModule === 'tasks' && (
+              <TaskKanbanBoard
+                tasks={complianceTasks}
+                users={users}
+                onAssignTask={handleAssignTask}
+                onUpdateStage={handleUpdateKanbanStage}
+              />
+            )}
 
-        {activeModule === 'dashboard' && (
-          <FirmOwnerDashboard />
-        )}
+            {activeModule === 'dashboard' && (
+              <FirmOwnerDashboard />
+            )}
 
-        {activeModule === 'feed' && (
-          <FinancialFeedPage />
-        )}
+            {activeModule === 'feed' && (
+              <FinancialFeedPage />
+            )}
 
-        {activeModule === 'connections' && (
-          <ConnectionsPage />
-        )}
+            {activeModule === 'connections' && (
+              <ConnectionsPage />
+            )}
 
-        {activeModule === 'messages' && (
-          <MessagingPage />
-        )}
+            {activeModule === 'messages' && (
+              <MessagingPage />
+            )}
 
-        {activeModule === 'ai-assistant' && (
-          <AiAssistantPage />
-        )}
+            {activeModule === 'ai-assistant' && (
+              <AiAssistantPage />
+            )}
 
-        {activeModule === 'notifications' && (
-          <NotificationsPage />
-        )}
+            {activeModule === 'notifications' && (
+              <NotificationsPage />
+            )}
 
-        {activeModule === 'profile' && (
-          <ProfilePage user={currentUser} />
-        )}
+            {activeModule === 'profile' && (
+              <ProfilePage user={currentUser} />
+            )}
 
-        {activeModule === 'login' && (
-          <AuthPage onAuthSuccess={(u) => {
-            setCurrentUser(u);
-            setActiveModule('clients');
-            showToast(`Welcome, ${u.name || u.full_name || 'Partner'}!`);
-          }} />
+            {activeModule === 'login' && (
+              <AuthPage onAuthSuccess={(u) => {
+                setCurrentUser(u);
+                setActiveModule('clients');
+                showToast(`Welcome, ${u.name || u.full_name || 'Partner'}!`);
+              }} />
+            )}
+          </>
         )}
 
       </main>
