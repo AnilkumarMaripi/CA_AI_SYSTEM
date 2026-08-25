@@ -167,7 +167,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#1A1814] flex flex-col font-sans">
       <div className="top-bar"></div>
       
       {/* Top Navbar */}
