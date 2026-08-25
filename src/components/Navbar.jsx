@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { Sparkles, Users, MessageSquare, Camera, Bell, UserCheck, BarChart3, ShieldCheck, Lock, Menu, X } from 'lucide-react';
+import { Users, Calendar, FolderCheck, GitCompare, LayoutGrid, BarChart3, Sparkles, MessageSquare, Camera, ShieldCheck, Lock, Menu, X, UserCheck } from 'lucide-react';
 
 export default function Navbar({ activeModule, setActiveModule, currentUser, onOpenAuthModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'feed', label: 'Feed & Insights', icon: Sparkles },
-    { id: 'connections', label: 'CA Network', icon: Users },
-    { id: 'messages', label: 'Messaging', icon: MessageSquare },
-    { id: 'ai-assistant', label: 'AI OCR Scanner', icon: Camera },
-    { id: 'notifications', label: 'Notifications', icon: Bell },
-    { id: 'profile', label: 'Profile', icon: UserCheck },
+    { id: 'clients', label: 'Client Directory', icon: Users },
+    { id: 'compliance', label: 'Compliance Calendar', icon: Calendar },
+    { id: 'documents', label: 'Docs Collection', icon: FolderCheck },
+    { id: 'reconciliation', label: 'CSV Reconciler', icon: GitCompare },
+    { id: 'tasks', label: 'Task Kanban', icon: LayoutGrid },
     { id: 'dashboard', label: 'Analytics', icon: BarChart3 },
-    { id: 'login', label: 'Auth Portal', icon: ShieldCheck },
+    { id: 'feed', label: 'AI Feed', icon: Sparkles },
+    { id: 'connections', label: 'CA Network', icon: Users },
+    { id: 'messages', label: 'Messages', icon: MessageSquare },
+    { id: 'ai-assistant', label: 'AI Scanner', icon: Camera },
+    { id: 'login', label: 'Auth Portal', icon: Lock },
   ];
 
   const handleSelectModule = (id) => {
@@ -21,19 +24,19 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
   };
 
   return (
-    <header className="w-full py-4 px-4 sm:px-8 flex justify-center sticky top-0 z-50">
+    <header className="w-full py-3 px-3 sm:px-6 flex justify-center sticky top-0 z-50">
       <div className="nav-pill max-w-full overflow-x-auto scrollbar-none flex items-center justify-between shadow-2xl">
         
         {/* Brand Logo */}
         <div 
           className="logo flex items-center gap-2 cursor-pointer select-none shrink-0" 
-          onClick={() => handleSelectModule('feed')}
+          onClick={() => handleSelectModule('clients')}
         >
           <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-[#6366f1] to-[#a855f7] flex items-center justify-center text-white font-extrabold text-xs shadow-md">
-            ⚡
+            ⚖️
           </div>
-          <span className="font-bold text-[17px] text-white tracking-tight font-display">
-            CA_<span className="text-[#6366f1]">AI</span>
+          <span className="font-bold text-[16px] text-white tracking-tight font-display">
+            Tax<span className="text-[#6366f1]">Desk</span>
           </span>
         </div>
 
@@ -61,7 +64,7 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
             <div className="flex items-center gap-2 bg-[#121215] border border-[#1f1f23] px-3 py-1.5 rounded-full text-xs text-white shadow-sm">
               <UserCheck className="w-4 h-4 text-[#22c55e]" />
               <div className="hidden sm:block text-left leading-tight">
-                <span className="font-bold block text-[11px] text-white">{currentUser.name || currentUser.full_name}</span>
+                <span className="font-bold block text-[11px] text-white">{currentUser.name || currentUser.full_name || 'Staff User'}</span>
                 <span className="text-[9px] uppercase tracking-wider text-[#818cf8] font-mono">{currentUser.role || 'Member'}</span>
               </div>
             </div>
@@ -71,7 +74,7 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
               className="book-cta flex items-center gap-1.5 text-xs py-1.5 px-3.5"
             >
               <Lock className="w-3.5 h-3.5" />
-              <span>Sign In</span>
+              <span>Staff Login</span>
             </button>
           )}
 
@@ -87,7 +90,7 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-20 left-4 right-4 bg-[#121215] border border-[#1f1f23] rounded-2xl p-4 shadow-2xl space-y-2 z-50">
+        <div className="lg:hidden absolute top-16 left-4 right-4 bg-[#121215] border border-[#1f1f23] rounded-2xl p-4 shadow-2xl space-y-2 z-50">
           <div className="grid grid-cols-2 gap-2 text-xs font-medium">
             {navItems.map(item => {
               const Icon = item.icon;
@@ -96,14 +99,14 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
                 <button
                   key={item.id}
                   onClick={() => handleSelectModule(item.id)}
-                  className={`p-3 rounded-xl border flex items-center gap-2 transition-all text-left ${
+                  className={`p-2.5 rounded-xl border flex items-center gap-2 transition-all text-left ${
                     isActive
                       ? 'bg-[#6366f1]/20 border-[#6366f1] text-white font-bold'
                       : 'bg-[#09090b] border-[#1f1f23] text-slate-300 hover:bg-[#18181c]'
                   }`}
                 >
-                  <Icon className="w-4 h-4 text-[#6366f1] shrink-0" />
-                  <span className="line-clamp-1">{item.label}</span>
+                  <Icon className="w-3.5 h-3.5 text-[#6366f1] shrink-0" />
+                  <span className="line-clamp-1 text-[11px]">{item.label}</span>
                 </button>
               );
             })}
@@ -113,4 +116,3 @@ export default function Navbar({ activeModule, setActiveModule, currentUser, onO
     </header>
   );
 }
-
